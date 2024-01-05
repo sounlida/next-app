@@ -1,0 +1,1 @@
+psql "postgres://default:pV5ri7EQNTeC@ep-red-water-37875249.us-east-1.postgres.vercel-storage.com:5432/verceldb"
