@@ -7,7 +7,7 @@ import { Tab } from "@headlessui/react";
 export default function Home() {
   return (
     <>
-    <Headers />
+    
     <Tab />
     <PromoSections />
     </>
