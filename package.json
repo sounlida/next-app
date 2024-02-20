@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.7",
     "@emotion/cache": "^11.11.0",
     "@emotion/server": "^11.11.0",
+    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@material-tailwind/react": "^2.1.9",
     "@mui/material-nextjs": "^5.15.9",

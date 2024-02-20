@@ -1,20 +1,17 @@
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+
+
 import {MasonryGridGallery} from "@/components/products/MasonryGridGallery";
 import Hero from "../ui/hero";
-import InfoCard from "@/components/info-card";
-import Layout from "@/components/layout";
+import HeaderSections from "../ui/HeaderSections";
 
 
-export default function Campaign() {
+
+export default function page() {
   return (
  
       <div>
-       <Navbar />
-       <Layout />
-       <Hero />
+        <HeaderSections /> 
        <MasonryGridGallery />
-       <Footer />
        </div>
   );
 }
