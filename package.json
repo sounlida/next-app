@@ -1,8 +1,5 @@
 {
   "scripts": {
-    "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -25,10 +22,6 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.8.1",
-    "@edgio/core": "^7.8.1",
-    "@edgio/next": "^7.8.1",
-    "@edgio/prefetch": "^7.8.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
