@@ -1,6 +1,6 @@
 // Import the Client Component into a parent Layout (Server Component)
-import { BlogNavLink } from '../../ui/blog-nav-link'
-import getFeaturedPosts from '../../ui/get-featured-posts'
+import { BlogNavLink } from '../ui/blog-nav-link'
+import getFeaturedPosts from '../ui/get-featured-posts'
  
 export default async function Layout({
   children,
