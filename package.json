@@ -16,7 +16,7 @@
     "@heroicons/react": "^2.1.1",
     "@material-tailwind/react": "^2.1.9",
     "@mui/material-nextjs": "^5.15.9",
-    "@upstash/redis": "^1.28.3",
+    "@upstash/redis": "^1.28.4",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
