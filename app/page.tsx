@@ -25,10 +25,10 @@ export default function Home() {
         </div>
       </div>
       <ProductLists />
-      <div className="flex max-w-9xl w-full min-w-screen bg-blue-500">
+      <div className="flex z-10 max-w-5xl w-full items-center justify-between h-40 px-20 bg-blue-200">
         <Link
           href="/login"
-          className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          className="flex rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
         >
           <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
         </Link>
