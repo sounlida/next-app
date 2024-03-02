@@ -3,6 +3,7 @@ import '@/app/ui/global.css';
 import { roboto } from '@/app/ui/fonts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: {
@@ -26,6 +27,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <Analytics />
+        <GoogleTagManager gtmId="GTM-WC5CGQ7" />
       </body>
     </html>
   );
