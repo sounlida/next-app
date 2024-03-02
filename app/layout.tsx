@@ -1,3 +1,4 @@
+'use client';
 import { Metadata } from 'next';
 import '@/app/ui/global.css';
 import { roboto } from '@/app/ui/fonts';
@@ -26,10 +27,9 @@ export default function RootLayout({
       <body className={`${roboto.className} antialiased`}>
         {children}
         <SpeedInsights />
-        <Analytics />
-
+        <Analytics mode={'production'} />;
       </body>
-      <GoogleTagManager gtmId="GTM-WC5CGQ7" />
+      <GoogleTagManager gtmId="GTM-WKJGWQQ" />
     </html>
   );
 }
