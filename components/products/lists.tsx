@@ -1,4 +1,4 @@
-import productData from '@/lib/productData'
+import productData from '@/app/lib/productData'
 import Image from 'next/image'
 
 export default function Example() {
