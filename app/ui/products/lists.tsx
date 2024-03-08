@@ -26,7 +26,7 @@ export default function Example() {
                         <div key={product.id} className="group relative rounded-md bg-gray-50">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                 <Image
-                                    src={product.imageSrc}
+                                    src={product.image_url}
                                     alt={product.imageAlt}
                                     width={300}
                                     height={300}
