@@ -1,6 +1,6 @@
 
 import AcmeLogo from './ui/acme-logo';
-import Lists from './ui/products/lists';
+import Lists from '@/components/products/lists';
 import Link from 'next/link';
 import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Header from '@/components/Header';
