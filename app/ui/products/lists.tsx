@@ -13,6 +13,7 @@
   ```
 */
 import productData from "@/app/lib/productData"
+import Image from 'next/image';
 
 export default function Example() {
     return (
@@ -24,9 +25,12 @@ export default function Example() {
                     {productData.map((product) => (
                         <div key={product.id} className="group relative rounded-md bg-gray-50">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img
+                                <Image
                                     src={product.imageSrc}
                                     alt={product.imageAlt}
+                                    width={300}
+                                    height={300}
+                                    priority
                                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                 />
                             </div>
