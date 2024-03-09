@@ -1,25 +1,158 @@
-import productData from '@/app/lib/productData'
-import Image from 'next/image'
+/*
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+*/
+const products = [
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (1).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 2,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (2).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 3,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (3).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 4,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (4).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (5).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 6,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (6).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 7,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (7).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 8,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (8).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 9,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (9).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 10,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (10).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 11,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (11).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  {
+    id: 12,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "/products/list/fashion-bag (12).JPG",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$13",
+    colors: "Black",
+  },
+  // More products...
+]
 
 export default function Example() {
   return (
-    <div>
+    <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="sr-only">Products</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {productData.map((product) => (
-            <a key={product.id} href={product.href} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {products.map((product) => (
+            <div key={product.id} className="group relative">
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <img
-                  src={product.image_url}
+                  src={product.imageSrc}
                   alt={product.imageAlt}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
-              <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-              <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-            </a>
+              <div className="mt-4 flex justify-between">
+                <div>
+                  <h3 className="text-sm text-gray-700">
+                    <a href={product.href}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {product.name}
+                    </a>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">{product.colors}</p>
+                </div>
+                <p className="text-1xl font-semibold medium text-red-700">{product.price}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
