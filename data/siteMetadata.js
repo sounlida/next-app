@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-    title: 'Next.js Starter Shop',
+    title: 'ebuykh shop',
     author: 'ebuykh',
-    headerTitle: 'TailwindBlog',
+    headerTitle: 'ebuykh',
     description: 'A shop created with Next.js and Tailwind.css',
     language: 'en-us',
     theme: 'system', // system, dark or light

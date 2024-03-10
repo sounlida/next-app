@@ -1,8 +1,15 @@
+'use client'
+import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
+import MobileNav from './MobileNav'
 
+
+import React from 'react'
 
 const Header = () => {
+
+
     return (
         <header className="flex items-center justify-between py-10">
             <div className="flex items-center space-x-4 leading-5 sm:space-x-6">

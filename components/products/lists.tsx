@@ -12,122 +12,12 @@
   }
   ```
 */
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (1).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 2,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (2).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 3,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (3).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 4,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (4).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (5).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 6,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (6).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 7,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (7).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 8,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (8).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 9,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (9).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 10,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (10).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 11,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (11).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  {
-    id: 12,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc: "/products/list/fashion-bag (12).JPG",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$13",
-    colors: "Black",
-  },
-  // More products...
-]
+import products from '@/data/productsData'
 
 export default function Example() {
   return (
     <>
-      <div className="mx-auto mt-1 max-w-2xl px-4 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto -mt-20 max-w-2xl px-4 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
 
         <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -150,7 +40,7 @@ export default function Example() {
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">{product.colors}</p>
                 </div>
-                <p className="text-1xl font-semibold medium text-red-700">{product.price}</p>
+                <p className="text-2xl font-semibold medium text-red-700">{product.price}</p>
               </div>
             </div>
           ))}
