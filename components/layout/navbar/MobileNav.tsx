@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Link from './Link'
-import headerNavLinks from '@/data/headerNavLinks'
+import Link from '../../Link'
+import headerNavLinks from '@/lib/data/headerNavLinks'
 
 const MobileNav = () => {
     const [navShow, setNavShow] = useState(false)
