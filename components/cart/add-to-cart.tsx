@@ -2,9 +2,9 @@
 
 import { PlusIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import { addItem } from 'components/cart/actions';
-import LoadingDots from 'components/loading-dots';
-import { ProductVariant } from 'lib/shopify/types';
+import { addItem } from './actions';
+import LoadingDots from '../loading-dots';
+import { ProductVariant } from '@/lib/data/types';
 import { useSearchParams } from 'next/navigation';
 import { useFormState, useFormStatus } from 'react-dom';
 

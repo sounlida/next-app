@@ -1,3 +1,4 @@
+import { getCart } from '@/lib/data';
 import { cookies } from 'next/headers';
 import CartModal from './modal';
 
@@ -9,5 +10,5 @@ export default async function Cart() {
         cart = await getCart(cartId);
     }
 
-    return;
+    return <CartModal cart={cart} />;
 }

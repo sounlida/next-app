@@ -1,24 +1,23 @@
 'use client'
 
-import Cart from '@/components/cart';
-import OpenCart from '@/components/cart/open-cart';
 import LogoSquare from '@/components/logo-square';
-import headerNavLinks from '@/lib/data/headerNavLinks'
-import Link from '../../Link'
-import MobileNav from './MobileNav'
-import ThemeSwitch from '../../ThemeSwitch'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import classnames from 'classnames'
-import Search from '@/components/layout/navbar/search';
-import { Suspense } from 'react';
-
+import Link from 'next/link';
 
 const { SITE_NAME } = process.env;
 
 const Navbar = () => {
-    const currentPath = usePathname()
 
+    const currentPath = usePathname();
+
+    const links = [
+        { label: 'Home', href: '/' },
+        { label: 'Shop', href: '/shop' },
+        { label: 'Cart', href: '/cart' },
+        { label: 'About', href: '/about' },
+    ]
     return (
         <nav
             className='relative flex items-center justify-between p-4 lg:px-6'
@@ -34,29 +33,18 @@ const Navbar = () => {
                     <li
                         className='hidden font-medium text-gray-900 dark:text-gray-100 space-x-4 sm:block'
                     >
-                        {headerNavLinks
-
+                        {links
                             .map(link =>
                                 <Link
-                                    key={link.title}
+                                    key={link.href}
                                     className={classnames({
                                         'text-blue-900': link.href === currentPath,
                                         'text-zinc-900': link.href !== currentPath,
                                         'hover:text-blue-700 transition-color': true
                                     })}
-                                    href={link.href}>{link.title}</Link>)}
+                                    href={link.href}>{link.label}</Link>)}
                     </li>
                 </ul>
-                <div className="hidden justify-center md:flex md:w-1/3">
-                    <Search />
-                </div>
-                <div className="flex justify-end md:w-1/3">
-                    <Suspense fallback={<OpenCart />}>
-
-                    </Suspense>
-                </div>
-                <MobileNav />
-                <ThemeSwitch />
 
             </div>
         </nav>

@@ -1,13 +1,15 @@
-import { MetadataRoute } from 'next';
-import siteMetadata from '@/lib/data/siteMetadata';
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : 'http://localhost:3000';
 
-export default function robots(): MetadataRoute.Robots {
+export default function robots() {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
-    sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
-    host: siteMetadata.siteUrl,
+    rules: [
+      {
+        userAgent: '*',
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
