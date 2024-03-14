@@ -1,6 +1,7 @@
 interface Product {
   id: number;
   name: string;
+  title: string;
   href: string;
   price: string;
   breadcrumbs: {
@@ -31,6 +32,7 @@ const projectsData: Product[] = [
   {
     id: 1,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -84,6 +86,7 @@ const projectsData: Product[] = [
   {
     id: 2,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -137,6 +140,7 @@ const projectsData: Product[] = [
   {
     id: 3,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -190,6 +194,7 @@ const projectsData: Product[] = [
   {
     id: 4,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -243,6 +248,7 @@ const projectsData: Product[] = [
   {
     id: 5,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -296,6 +302,7 @@ const projectsData: Product[] = [
   {
     id: 6,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -349,6 +356,7 @@ const projectsData: Product[] = [
   {
     id: 7,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -402,6 +410,7 @@ const projectsData: Product[] = [
   {
     id: 8,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -455,6 +464,7 @@ const projectsData: Product[] = [
   {
     id: 9,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -508,6 +518,7 @@ const projectsData: Product[] = [
   {
     id: 10,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -561,6 +572,7 @@ const projectsData: Product[] = [
   {
     id: 11,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [
@@ -614,6 +626,7 @@ const projectsData: Product[] = [
   {
     id: 12,
     name: 'Earthen Bottle',
+    title: 'Earthen Bottle',
     href: '#',
     price: '$48',
     breadcrumbs: [

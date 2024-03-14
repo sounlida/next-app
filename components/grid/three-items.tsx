@@ -1,13 +1,12 @@
-import { promises as fs } from 'fs';
-import { GridTileImage } from './tile';
-import { getCollectionProducts } from '@/lib/data/projectsData';
+import { GridTileImage } from '@/components/grid/tile';
+import { getCollectionProducts } from '@/lib/data';
 import type { Product } from '@/lib/data/types';
 import Link from 'next/link';
 
 function ThreeItemGridItem({
   item,
   size,
-  priority,
+  priority
 }: {
   item: Product;
   size: 'full' | 'half';
@@ -29,20 +28,19 @@ function ThreeItemGridItem({
           label={{
             position: size === 'full' ? 'center' : 'bottom',
             title: item.title as string,
-            amount: item.priceRange.minVariantPrice.amount,
-            currencyCode: item.priceRange.minVariantPrice.currencyCode,
+            amount: item.priceRange.maxVariantPrice.amount,
+            currencyCode: item.priceRange.maxVariantPrice.currencyCode
           }}
         />
       </Link>
     </div>
   );
 }
+
 export async function ThreeItemGrid() {
-  const file = await fs.readFile(process.cwd() + '@/lib/data/locals/projectsData', 'utf8');
-  const data = JSON.parse(file);
   // Collections that start with `hidden-*` are hidden from the search page.
   const homepageItems = await getCollectionProducts({
-    collection: 'hidden-homepage-featured-items',
+    collection: 'hidden-homepage-featured-items'
   });
 
   if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
