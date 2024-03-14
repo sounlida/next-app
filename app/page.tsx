@@ -1,24 +1,20 @@
 
-import Lists from '@/components/grid/lists';
+import { Lists } from '@/components/grid/lists';
 import Link from 'next/link';
 import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
 export const metadata = {
-  description: 'High-performance ecommerce store built with Next.js, Vercel, locals.',
+  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
   openGraph: {
     type: 'website'
   }
 };
-
-export default async function HomePage() {
+export default function HomePage() {
   return (
-    <main className='flex w-full min-h-screen flex-col items-center'>
-      <Suspense>
-        <Lists />
-      </Suspense>
+    <>
+      <Lists />
       <div className="flex w-full items-center justify-between h-40 px-20 bg-blue-200">
         <Link
           href="/login"
@@ -27,6 +23,6 @@ export default async function HomePage() {
           <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
         </Link>
       </div>
-    </main >
+    </>
   );
 }

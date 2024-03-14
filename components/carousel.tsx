@@ -1,4 +1,4 @@
-import { getCollectionProducts } from '@/lib/data';
+import { getCollectionProducts } from '@/lib/data/projectsData';
 import Link from 'next/link';
 import { GridTileImage } from './grid/tile';
 

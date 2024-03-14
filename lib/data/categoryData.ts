@@ -128,7 +128,4 @@ const navigation = {
   ],
 };
 
-module.exports = {
-  pages,
-  categories,
-};
+export default navigation;

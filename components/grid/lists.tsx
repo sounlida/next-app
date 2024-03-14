@@ -12,12 +12,11 @@
   }
   ```
 */
-import projectsData from '@/lib/data/locals/projectsData'
-import { GridTileImage } from './tile';
+import { promises as fs } from 'fs';
+import projectsData from '@/lib/data/projectsData'
 
 
-export async function ListsGridItem() {
-
+export function Lists() {
   return (
     <>
       <div className="mx-auto mt-1 max-w-2xl px-4 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

@@ -1,6 +1,4 @@
-'use client';
-import '@/app/global.css';
-import { roboto } from '@/app/ui/fonts';
+import './global.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleTagManager } from '@next/third-parties/google';
@@ -8,12 +6,10 @@ import { WebVitals } from '@/app/_components/web-vitals';
 import Navbar from '@/components/layout/navbar';
 import { ReactNode, Suspense } from 'react';
 import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
 
 
 
-
-export default async function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
 
@@ -24,14 +20,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <main>{children}</main>
         </Suspense>
         <SpeedInsights />
-        <Analytics
-          beforeSend={(event) => {
-            if (localStorage.getItem('va-disable')) {
-              return null;
-            }
-            return event;
-          }}
-        />
+        <Analytics />
+
       </body>
       <GoogleTagManager gtmId="GTM-WKJGWQQ" />
     </html>

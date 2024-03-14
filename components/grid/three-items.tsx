@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { GridTileImage } from './tile';
-import { getCollectionProducts } from '@/lib/data/locals/projectsData';
-import type { Product } from '@/lib/data/locals/types';
+import { getCollectionProducts } from '@/lib/data/projectsData';
+import type { Product } from '@/lib/data/types';
 import Link from 'next/link';
 
 function ThreeItemGridItem({
