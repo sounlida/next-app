@@ -5,7 +5,6 @@ import headerNavLinks from '@/data/headerNavLinks'
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-import Search from './search';
 const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
