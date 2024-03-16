@@ -42,7 +42,7 @@ export default async function Navbar() {
         <div className="flex justify-end md:w-1/3">
           <p>Cart</p>
         </div>
-      </div>
+     
     </nav>
   );
 }
