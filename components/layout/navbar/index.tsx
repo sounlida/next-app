@@ -38,7 +38,7 @@ export default async function Navbar() {
                     ))}
             </div>
         <div className="hidden justify-center md:flex md:w-1/3">
-          <Search />
+     
         </div>
         <div className="flex justify-end md:w-1/3">
           <p>Cart</p>
