@@ -1,6 +1,6 @@
 
 
-import LogoSquare from 'components/logo-square';
+import LogoSquare from '@/components/logo-square';
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from 'next/link';
 import { Suspense } from 'react';
