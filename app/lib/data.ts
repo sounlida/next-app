@@ -7,8 +7,9 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Product,
 } from './definitions';
-import { formatCurrency } from './utils';
+import { formatCurrency, formatPrice } from './utils';
 
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
@@ -227,5 +228,25 @@ export async function getUser(email: string) {
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
+  }
+}
+
+export async function fetchProducts() {
+  try {
+    const data = await sql<ProductField>`
+      SELECT
+        id,
+        titel,
+        coloe,
+        price
+      FROM products
+      ORDER BY name ASC
+    `;
+
+    const products = data.rows;
+    return products;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all products.');
   }
 }
