@@ -7,7 +7,11 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
-  Product,
+  ProductsField,
+  ProductsTableType,
+  ProductsFieldRaw,
+  ProductsForm,
+  ProductsTable,
 } from './definitions';
 import { formatCurrency, formatPrice } from './utils';
 
@@ -73,12 +77,14 @@ export async function fetchCardData() {
 
     const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
     const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
+    const numberOfProducts = Number(data[1].rows[0].count ?? '0');
     const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
     const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
 
     return {
       numberOfCustomers,
       numberOfInvoices,
+      numberOfProducts,
       totalPaidInvoices,
       totalPendingInvoices,
     };
@@ -231,13 +237,49 @@ export async function getUser(email: string) {
   }
 }
 
+export async function fetchCardProducts() {
+  try {
+    // You can probably combine these into a single SQL query
+    // However, we are intentionally splitting them to demonstrate
+    // how to initialize multiple queries in parallel with JS.
+    const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
+    const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
+    const invoiceStatusPromise = sql`SELECT
+         SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
+         SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
+         FROM invoices`;
+
+    const data = await Promise.all([
+      invoiceCountPromise,
+      customerCountPromise,
+      invoiceStatusPromise,
+    ]);
+
+    const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
+    const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
+    const numberOfProducts = Number(data[1].rows[0].count ?? '0');
+    const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
+    const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
+
+    return {
+      numberOfCustomers,
+      numberOfInvoices,
+      numberOfProducts,
+      totalPaidInvoices,
+      totalPendingInvoices,
+    };
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch card data.');
+  }
+}
 export async function fetchProducts() {
   try {
-    const data = await sql<ProductField>`
+    const data = await sql<ProductsField>`
       SELECT
         id,
         titel,
-        coloe,
+        color,
         price
       FROM products
       ORDER BY name ASC
@@ -248,5 +290,60 @@ export async function fetchProducts() {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all products.');
+  }
+}
+
+export async function fetchProductsPages(query: string) {
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM products
+    WHERE
+      products.title ILIKE ${`%${query}%`} OR
+      products.price::text ILIKE ${`%${query}%`} OR
+      products.color::text ILIKE ${`%${query}%`} OR
+products.image_url::text ILIKE ${`%${query}%`} OR
+      products.sizes::text ILIKE ${`%${query}%`} OR
+      products.category::text ILIKE ${`%${query}%`} OR
+      products.condition::text ILIKE ${`%${query}%`} OR
+      products.description::text ILIKE ${`%${query}%`} OR
+      products.material ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of products.');
+  }
+}
+
+export async function fetchProductsById(id: string) {
+  try {
+    const data = await sql<ProductsForm>`
+      SELECT
+        products.id,
+products.title,
+        products.price,
+products.color,
+products.image_url,
+        products.sizes,
+      products.category,
+      products.condition,
+      products.description,
+      products.material
+      FROM products
+      WHERE products.id = ${id};
+    `;
+
+    const products = data.rows.map((products) => ({
+      ...products,
+      // Convert amount from cents to dollars
+      price: products.price / 100,
+    }));
+
+    return products[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch products.');
   }
 }

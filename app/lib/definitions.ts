@@ -87,19 +87,45 @@ export type InvoiceForm = {
   status: 'pending' | 'paid';
 };
 
-export type Product = {
+export type ProductsTableType = {
   id: number;
   title: string;
   color: string;
   price: number;
   image_url: string;
+  size: string;
   category: string;
   condition: string;
   description: string;
   material: string;
 };
 
-export type ProductField = {
+export type FormattedProductsTable = {
+  id: number;
+  title: string;
+  color: string;
+  price: number;
+  image_url: string;
+  size: string;
+  category: string;
+  condition: string;
+  description: string;
+  material: string;
+};
+export type Products = {
+  id: number;
+  title: string;
+  color: string;
+  price: number;
+  image_url: string;
+  size: string;
+  category: string;
+  condition: string;
+  description: string;
+  material: string;
+};
+
+export type ProductsField = {
   id: number;
   title: string;
   color: string;
@@ -107,6 +133,22 @@ export type ProductField = {
   image_url: string;
 };
 
-export type ProductFieldRaw = Omit<Product, 'price'> & {
+export type ProductFieldRaw = Omit<Products, 'price'> & {
   price: number;
+};
+
+export type ProductsTable = {
+  id: number;
+  title: string;
+  color: string;
+  price: number;
+  image_url: string;
+};
+
+export type ProductsForm = {
+  id: number;
+  title: string;
+  color: string;
+  price: number;
+  image_url: string;
 };
