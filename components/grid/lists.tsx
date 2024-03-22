@@ -12,7 +12,7 @@
   }
   ```
 */
-import projectsData from '@/lib/data/projectsData'
+import projectsData from '@/lib/projectsData'
 
 
 export function Lists() {
