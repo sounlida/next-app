@@ -2,36 +2,25 @@ import './global.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleTagManager } from '@next/third-parties/google';
-import Navbar from '@/components/layout/navbar';
 import { ReactNode, Suspense } from 'react';
 import { GeistSans } from 'geist/font/sans';
+import { Metadata } from 'next';
 
-const { SITE_NAME } = process.env;
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : 'http://localhost:3000';
-
-export const metadata = {
-  metadataBase: new URL(baseUrl),
+export const metadata: Metadata = {
   title: {
-    default: SITE_NAME!,
-    template: `%s | ${SITE_NAME}`
+    template: '%s | Shop Dashboard',
+    default: 'Shop Dashboard',
   },
-  robots: {
-    follow: true,
-    index: true
-  },
+  description: 'The official Next.js Learn Dashboard built with App Router.',
+  metadataBase: new URL('https://ebuykh.vercel.app'),
 };
 
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <head>
-        <meta property="og:image" content="Link preview image URL" />
-      </head>
+
       <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
-        <Navbar />
 
         <Suspense>
           <main>{children}</main>
