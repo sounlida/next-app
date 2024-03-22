@@ -28,7 +28,7 @@ interface Product {
 }
 [];
 
-const productData: Product[] = [
+const productsData: Product[] = [
   {
     id: 1,
     name: 'Earthen Bottle',
@@ -680,4 +680,4 @@ const productData: Product[] = [
 
   // More products...
 ];
-export default productData;
+export default productsData;
