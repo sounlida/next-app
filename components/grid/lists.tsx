@@ -12,29 +12,21 @@
   }
   ```
 */
-//import projectsData from '@/lib/projectsData'
-import React from 'react'
-import { sql } from '@vercel/postgres';
 import Image from 'next/image'
+interface Product {
+  id: number;
+  title: string;
+  href: string;
+  price: string;
+  description: string;
+  details: string;
+  images: string;
+  colors: string;
+  size: string;
+  collection: string;
+}
 
-export default async function Lists() {
-  let data
-
-  try {
-    data = await sql`SELECT * FROM product`
-  } catch (e: any) {
-    if (e.message.includes('relation "product" does not exist')) {
-      console.log(
-        'Table does not exist, creating and seeding it with dummy data now...'
-      )
-      // Table is not created yet
-      data = await sql`SELECT * FROM product`
-    } else {
-      throw e
-    }
-  }
-
-  const { rows: product } = data
+export default function ProductsList({ products }: { products: Product[] }) {
 
   return (
     <>
@@ -42,11 +34,11 @@ export default async function Lists() {
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {product.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="group relative">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <Image
-                  src={product.images}
+                  src={product.images[0]}
                   alt={product.title}
                   width={100}
                   height={100}
@@ -58,10 +50,10 @@ export default async function Lists() {
                   <h3 className="text-sm text-gray-700">
                     <a href={product.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
+                      {product.title}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500">{product.colors}</p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
               </div>
