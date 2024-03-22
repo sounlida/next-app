@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import Link from 'next/link';
 import Search from './search';
 import MobileNav from './MobileNav';
-import headerNavLinks from '@/lib/data/headerNavLinks'
+import headerNavLinks from '@/lib/headerNavLinks'
 
 const { SITE_NAME } = process.env;
 

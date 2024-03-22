@@ -1,10 +1,7 @@
 
 import { Lists } from '@/components/grid/lists';
-import Link from 'next/link';
-import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Footer from '@/components/layout/footer';
 import { Suspense } from 'react';
-import { Carousel } from '@/components/carousel';
 
 
 
@@ -19,15 +16,10 @@ export const metadata = {
 export default async function Page() {
   return (
     <>
-
       <Lists />
-
-
       <Suspense>
         <Footer />
       </Suspense>
-
-
     </>
   );
 }
