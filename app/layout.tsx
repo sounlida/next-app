@@ -4,7 +4,7 @@ import { roboto } from '@/app/ui/fonts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleTagManager } from '@next/third-parties/google';
-
+import React from 'react'
 
 export default function RootLayout({
   children,
