@@ -13,7 +13,7 @@
   ```
 */
 import projectsData from '@/lib/projectsData'
-
+import React from 'react'
 
 export function Lists() {
   return (
