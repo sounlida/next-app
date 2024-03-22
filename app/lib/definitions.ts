@@ -112,7 +112,7 @@ export type FormattedProductsTable = {
   description: string;
   material: string;
 };
-export type Products = {
+export type Product = {
   id: number;
   title: string;
   color: string;
@@ -125,7 +125,7 @@ export type Products = {
   material: string;
 };
 
-export type ProductsField = {
+export type ProductField = {
   id: number;
   title: string;
   color: string;
@@ -133,7 +133,7 @@ export type ProductsField = {
   image_url: string;
 };
 
-export type ProductFieldRaw = Omit<Products, 'price'> & {
+export type ProductFieldRaw = Omit<Product, 'price'> & {
   price: number;
 };
 
@@ -145,7 +145,7 @@ export type ProductsTable = {
   image_url: string;
 };
 
-export type ProductsForm = {
+export type ProductForm = {
   id: number;
   title: string;
   color: string;

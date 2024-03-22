@@ -12,7 +12,6 @@
   }
   ```
 */
-import { promises as fs } from 'fs';
 import projectsData from '@/lib/data/projectsData'
 
 

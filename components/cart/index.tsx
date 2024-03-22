@@ -1,4 +1,4 @@
-import { getCart } from '@/lib/data';
+import { getCart } from '@/app/lib/data';
 import { cookies } from 'next/headers';
 import CartModal from './modal';
 

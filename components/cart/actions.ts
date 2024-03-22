@@ -7,7 +7,7 @@ import {
   getCart,
   removeFromCart,
   updateCart,
-} from '@/lib/data';
+} from '@/app/lib/data';
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 

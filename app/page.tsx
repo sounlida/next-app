@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Footer from '@/components/layout/footer';
 import { Suspense } from 'react';
-import { promises as fs } from 'fs';
+import { Carousel } from '@/components/carousel';
+
+
 
 export const runtime = 'edge';
 
@@ -14,17 +16,18 @@ export const metadata = {
     type: 'website'
   }
 };
-export default function HomePage() {
-
+export default async function Page() {
   return (
     <>
 
-
       <Lists />
+
 
       <Suspense>
         <Footer />
       </Suspense>
+
+
     </>
   );
 }

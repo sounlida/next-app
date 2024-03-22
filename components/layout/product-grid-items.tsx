@@ -2,12 +2,11 @@ import Grid from '@/components/grid';
 import { GridTileImage } from '@/components/grid/tile';
 import { Product } from '@/lib/data/types';
 import Link from 'next/link';
-import projectsData from '@/lib/data/projectsData'
 
-export default function projectsDataItems({ products }: { products: Product[] }) {
+export default function ProductGridItems({ products }: { products: Product[] }) {
     return (
         <>
-            {projectsData.map((product) => (
+            {products.map((product) => (
                 <Grid.Item key={product.handle} className="animate-fadeIn">
                     <Link className="relative inline-block h-full w-full" href={`/product/${product.handle}`}>
                         <GridTileImage

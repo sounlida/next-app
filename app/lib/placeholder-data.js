@@ -180,7 +180,7 @@ const users = [
     { month: 'Dec', revenue: 4800 },
   ];
   
-  const products = [
+  const product = [
     {
       id: 1,
       title: 'Earthen Bottle',
@@ -318,5 +318,5 @@ const users = [
     customers,
     invoices,
     revenue,
-    products,
+    product,
   };

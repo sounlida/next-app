@@ -1,6 +1,11 @@
-import { HIDDEN_PRODUCT_TAG, TAGS } from '@/lib/constants';
-//import { isShopError } from 'lib/type-guards';
-//import { ensureStartsWith } from 'lib/utils';
+import { sql } from '@vercel/postgres';
+import {
+  HIDDEN_PRODUCT_TAG,
+  GRAPHQL_API_ENDPOINT,
+  TAGS,
+} from '@/lib/constants';
+import { isShopError } from '@/lib/type-guards';
+import { ensureStartsWith } from '@/lib/utils';
 import { revalidateTag } from 'next/cache';
 import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
@@ -49,15 +54,13 @@ import {
   ShopRemoveFromCartOperation,
   ShopUpdateCartOperation,
 } from './types';
-{
-  /** 
+
 const domain = process.env.Shop_STORE_DOMAIN
   ? ensureStartsWith(process.env.Shop_STORE_DOMAIN, 'https://')
   : '';
-const endpoint = `${domain}${Shop_GRAPHQL_API_ENDPOINT}`;
+const endpoint = `${domain}${GRAPHQL_API_ENDPOINT}`;
 const key = process.env.Shop_STOREFRONT_ACCESS_TOKEN!;
-*/
-}
+
 type ExtractVariables<T> = T extends { variables: object }
   ? T['variables']
   : never;

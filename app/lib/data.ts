@@ -7,10 +7,10 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
-  ProductsField,
+  ProductField,
   ProductsTableType,
-  ProductsFieldRaw,
-  ProductsForm,
+  ProductFieldRaw,
+  ProductForm,
   ProductsTable,
 } from './definitions';
 import { formatCurrency, formatPrice } from './utils';
@@ -237,111 +237,71 @@ export async function getUser(email: string) {
   }
 }
 
-export async function fetchCardProducts() {
+export async function fetchProduct() {
   try {
-    // You can probably combine these into a single SQL query
-    // However, we are intentionally splitting them to demonstrate
-    // how to initialize multiple queries in parallel with JS.
-    const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
-    const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
-    const invoiceStatusPromise = sql`SELECT
-         SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
-         SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
-         FROM invoices`;
-
-    const data = await Promise.all([
-      invoiceCountPromise,
-      customerCountPromise,
-      invoiceStatusPromise,
-    ]);
-
-    const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
-    const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
-    const numberOfProducts = Number(data[1].rows[0].count ?? '0');
-    const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
-    const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
-
-    return {
-      numberOfCustomers,
-      numberOfInvoices,
-      numberOfProducts,
-      totalPaidInvoices,
-      totalPendingInvoices,
-    };
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch card data.');
-  }
-}
-export async function fetchProducts() {
-  try {
-    const data = await sql<ProductsField>`
+    const data = await sql<ProductField>`
       SELECT
         id,
         titel,
         color,
         price
-      FROM products
+      FROM product
       ORDER BY name ASC
     `;
 
-    const products = data.rows;
-    return products;
+    const product = data.rows;
+    return product;
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all products.');
   }
 }
 
-export async function fetchProductsPages(query: string) {
+export async function fetchProductPages(query: string) {
   try {
     const count = await sql`SELECT COUNT(*)
-    FROM products
+    FROM product
     WHERE
-      products.title ILIKE ${`%${query}%`} OR
-      products.price::text ILIKE ${`%${query}%`} OR
-      products.color::text ILIKE ${`%${query}%`} OR
-products.image_url::text ILIKE ${`%${query}%`} OR
-      products.sizes::text ILIKE ${`%${query}%`} OR
-      products.category::text ILIKE ${`%${query}%`} OR
-      products.condition::text ILIKE ${`%${query}%`} OR
-      products.description::text ILIKE ${`%${query}%`} OR
-      products.material ILIKE ${`%${query}%`}
+      product.title ILIKE ${`%${query}%`} OR
+      product.price::text ILIKE ${`%${query}%`} OR
+      product.colors::text ILIKE ${`%${query}%`} OR
+product.images::text ILIKE ${`%${query}%`} OR
+      product.sizes::text ILIKE ${`%${query}%`} OR
+      product.description::text ILIKE ${`%${query}%`} OR
+      product.collection ILIKE ${`%${query}%`}
   `;
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch total number of products.');
+    throw new Error('Failed to fetch total number of product.');
   }
 }
 
-export async function fetchProductsById(id: string) {
+export async function fetchProductById(id: string) {
   try {
-    const data = await sql<ProductsForm>`
+    const data = await sql<ProductForm>`
       SELECT
-        products.id,
-products.title,
+        product.id,
+product.title,
         products.price,
-products.color,
-products.image_url,
-        products.sizes,
-      products.category,
-      products.condition,
-      products.description,
-      products.material
+product.colors,
+product.images,
+        products.size,
+      product.description,
+      product.collection
       FROM products
       WHERE products.id = ${id};
     `;
 
-    const products = data.rows.map((products) => ({
-      ...products,
+    const product = data.rows.map((product) => ({
+      ...product,
       // Convert amount from cents to dollars
-      price: products.price / 100,
+      price: product.price / 100,
     }));
 
-    return products[0];
+    return product[0];
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch products.');

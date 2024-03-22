@@ -1,4 +1,4 @@
-import { getCollectionProducts } from '@/lib/data/projectsData';
+import { getCollectionProducts } from '@/lib/data';
 import Link from 'next/link';
 import { GridTileImage } from './grid/tile';
 
@@ -24,8 +24,8 @@ export async function Carousel() {
                 alt={product.title}
                 label={{
                   title: product.title,
-                  amount: product.priceRange.minVariantPrice.amount,
-                  currencyCode: product.priceRange.minVariantPrice.currencyCode,
+                  amount: product.priceRange.maxVariantPrice.amount,
+                  currencyCode: product.priceRange.maxVariantPrice.currencyCode
                 }}
                 src={product.featuredImage?.url}
                 fill

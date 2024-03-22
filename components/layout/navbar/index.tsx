@@ -29,6 +29,14 @@ const Navbar = () => {
                             {SITE_NAME}
                         </div>
                     </Link>
+
+
+                </div>
+
+                <div className="hidden justify-center md:flex md:w-1/3">
+                    <Search />
+                </div>
+                <div className="flex justify-end md:w-1/3">
                     <ul className="flex items-center leading-5 sm:space-x-6">
                         <li
                             className='hidden font-medium text-gray-900 dark:text-gray-100 space-x-4 sm:block'
@@ -45,16 +53,7 @@ const Navbar = () => {
                                         href={link.href}>{link.label}</Link>)}
                         </li>
                     </ul>
-
                 </div>
-            </div>
-            <div className="hidden justify-center md:flex md:w-1/3">
-                <Search />
-            </div>
-            <div className="flex justify-end md:w-1/3">
-                <Suspense>
-                    <p>Cart</p>
-                </Suspense>
             </div>
         </nav>
     )

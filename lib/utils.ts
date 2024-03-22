@@ -17,8 +17,8 @@ export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
 
 export const validateEnvironmentVariables = () => {
   const requiredEnvironmentVariables = [
-    'NEXT_PUBLIC_VERCEL_URL',
-    'NEXT_PUBLIC_VERCEL_URL_ACCESS_TOKEN',
+    'STORE_DOMAIN',
+    'STOREFRONT_ACCESS_TOKEN',
   ];
   const missingEnvironmentVariables = [] as string[];
 
@@ -37,11 +37,11 @@ export const validateEnvironmentVariables = () => {
   }
 
   if (
-    process.env.NEXT_PUBLIC_VERCEL_URL?.includes('[') ||
-    process.env.NEXT_PUBLIC_VERCEL_URL?.includes(']')
+    process.env.STORE_DOMAIN?.includes('[') ||
+    process.env.STORE_DOMAIN?.includes(']')
   ) {
     throw new Error(
-      'Your `NEXT_PUBLIC_VERCEL_URL` environment variable includes brackets (ie. `[` and / or `]`). Your site will not work with them there. Please remove them.',
+      'Your `STORE_DOMAIN` environment variable includes brackets (ie. `[` and / or `]`). Your site will not work with them there. Please remove them.',
     );
   }
 };
