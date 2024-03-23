@@ -4,21 +4,40 @@ import { Analytics } from '@vercel/analytics/react';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { ReactNode, Suspense } from 'react';
 import { GeistSans } from 'geist/font/sans';
-import { Metadata } from 'next';
+import { ensureStartsWith } from '@/lib/shop/utils';
 
-export const metadata: Metadata = {
+const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : 'http://localhost:3000';
+const twitterCreator = TWITTER_CREATOR ? ensureStartsWith(TWITTER_CREATOR, '@') : undefined;
+const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : undefined;
+
+export const metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
-    template: '%s | Shop Dashboard',
-    default: 'Shop Dashboard',
+    default: SITE_NAME!,
+    template: `%s | ${SITE_NAME}`
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
-  metadataBase: new URL('https://ebuykh.vercel.app'),
+  robots: {
+    follow: true,
+    index: true
+  },
+  ...(twitterCreator &&
+    twitterSite && {
+    twitter: {
+      card: 'summary_large_image',
+      creator: twitterCreator,
+      site: twitterSite
+    }
+  })
 };
 
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
+      <GoogleTagManager gtmId="GTM-WKJGWQQ" />
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +51,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SpeedInsights />
         <Analytics />
       </body>
-      <GoogleTagManager gtmId="GTM-WKJGWQQ" />
     </html>
   );
 }

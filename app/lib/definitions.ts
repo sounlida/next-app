@@ -1,3 +1,4 @@
+import { ProductField } from '@/app/lib/definitions';
 // This file contains type definitions for your data.
 // It describes the shape of the data, and what data type each property should accept.
 // For simplicity of teaching, we're manually defining these types.
@@ -115,25 +116,35 @@ export type FormattedProductsTable = {
 export type Product = {
   id: number;
   title: string;
-  color: string;
   price: number;
-  image_url: string;
-  size: string;
-  category: string;
-  condition: string;
   description: string;
-  material: string;
+  details: string;
+  images: string;
+  colors: string;
+  size: string;
+  collection: string;
+};
+
+export type ProductItems = {
+  id: number;
+  title: string;
+  price: number;
+  images: string;
+  colors: string;
 };
 
 export type ProductField = {
   id: number;
   title: string;
-  color: string;
   price: number;
-  image_url: string;
+  images: string;
+  colors: string;
 };
 
 export type ProductFieldRaw = Omit<Product, 'price'> & {
+  price: number;
+};
+export type ProductItemsRaw = Omit<Product, 'price'> & {
   price: number;
 };
 

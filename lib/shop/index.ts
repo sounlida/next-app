@@ -1,10 +1,12 @@
+import { db } from '@vercel/postgres';
+
 import {
   HIDDEN_PRODUCT_TAG,
   Shop_GRAPHQL_API_ENDPOINT,
   TAGS,
-} from 'lib/constants';
-import { isShopError } from 'lib/type-guards';
-import { ensureStartsWith } from 'lib/utils';
+} from '@/lib/constants';
+import { isShopError } from '@/lib/type-guards';
+import { ensureStartsWith } from '@/lib/shop/utils';
 import { revalidateTag } from 'next/cache';
 import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
@@ -54,11 +56,13 @@ import {
   ShopUpdateCartOperation,
 } from './types';
 
+const client = await db.connect();
+
 const domain = process.env.Shop_STORE_DOMAIN
   ? ensureStartsWith(process.env.Shop_STORE_DOMAIN, 'https://')
   : '';
-const endpoint = `${domain}${Shop_GRAPHQL_API_ENDPOINT}`;
-const key = process.env.Shop_STOREFRONT_ACCESS_TOKEN!;
+const endpoint = `${Shop_GRAPHQL_API_ENDPOINT}`;
+//const key = process.env.Shop_STOREFRONT_ACCESS_TOKEN!;
 
 type ExtractVariables<T> = T extends { variables: object }
   ? T['variables']
@@ -82,7 +86,6 @@ export async function ShopFetch<T>({
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Shop-Storefront-Access-Token': key,
         ...headers,
       },
       body: JSON.stringify({

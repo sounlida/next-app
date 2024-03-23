@@ -1,21 +1,11 @@
-
+import { sql } from '@vercel/postgres';
 import { GridTileImage } from '@/components/grid/tile';
-import { getCollectionProducts } from 'lib/shop';
-import type { Product } from '@/lib/shop/types';
+import { getProduct } from '@/lib/data';
+import type { Product } from '@/lib/definitions';
 import Link from 'next/link';
 import Image from 'next/image'
-interface Product {
-    id: number;
-    title: string;
-    href: string;
-    price: string;
-    description: string;
-    details: string;
-    images: string;
-    colors: string;
-    size: string;
-    collection: string;
-}
+
+
 function ThreeItemGridItem({
     item,
     size,
@@ -30,8 +20,9 @@ function ThreeItemGridItem({
             className={size === 'full' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1'}
         >
             <Link className="relative block aspect-square h-full w-full" href={`/product/${item.handle}`}>
+
                 <GridTileImage
-                    src={item.images[0]}
+                    src={item.featuredImage.url}
                     fill
                     sizes={
                         size === 'full' ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 100vw'
@@ -41,8 +32,8 @@ function ThreeItemGridItem({
                     label={{
                         position: size === 'full' ? 'center' : 'bottom',
                         title: item.title as string,
-                        amount: item.price,
-                        currencyCode: item.price,
+                        amount: item.priceRange.maxVariantPrice.amount,
+                        currencyCode: item.priceRange.maxVariantPrice.currencyCode
                     }}
                 />
             </Link>
@@ -50,7 +41,7 @@ function ThreeItemGridItem({
     );
 }
 
-export async function ThreeItemGrid({ products }: { products: Product[] }) {
+export async function ThreeItemGrid() {
     // Collections that start with `hidden-*` are hidden from the search page.
     const homepageItems = await getCollectionProducts({
         collection: 'hidden-homepage-featured-items'

@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { ProductOption, ProductVariant } from '@/lib/shop/types';
-import { createUrl } from '@/lib/utils';
+import { createUrl } from '@/lib/shop/utils';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type Combination = {

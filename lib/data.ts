@@ -238,7 +238,15 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
-
+export async function getProduct(id: string) {
+  try {
+    const product = await sql`SELECT * FROM product WHERE id=${id}`;
+    return product;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
+  }
+}
 export async function fetchProduct() {
   try {
     const data = await sql<ProductField>`
