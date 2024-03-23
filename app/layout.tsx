@@ -5,7 +5,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import { ReactNode, Suspense } from 'react';
 import { GeistSans } from 'geist/font/sans';
 import { ensureStartsWith } from '@/lib/shop/utils';
-
+import Link from 'next/link';
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -37,8 +37,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <GoogleTagManager gtmId="GTM-WKJGWQQ" />
+
       <head>
+        <GoogleTagManager gtmId="GTM-WKJGWQQ" />
+        <Link rel="manifest" href="/manifest.json"></Link>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:url" content="Canonical link preview URL"></meta>

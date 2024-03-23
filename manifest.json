@@ -1,0 +1,29 @@
+{
+  "background_color": "#ffffff",
+  "description": "The official Next.js Learn Dashboard built with App Router.",
+  "dir": "auto",
+  "display": "browser",
+  "name": "ebuykh",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ebuykh",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "lang": "en",
+  "display_override": [
+    "browser",
+    "fullscreen",
+    "minimal-ui",
+    "standalone",
+    "window-controls-overlay"
+  ],
+  "categories": [
+    "lifestyle",
+    "photo",
+    "shopping",
+    "social"
+  ],
+  "share_target": {
+    "method": "GET"
+  }
+}
