@@ -1,7 +1,7 @@
 import {
     RecommendedProducts,
     RecommendedProductsSkeleton,
-} from '@/app/_components/recommended-products';
+} from '@/app/streaming/_components/recommended-products';
 import { Reviews, ReviewsSkeleton } from '@/app/_components/reviews';
 import { SingleProduct } from '@/app/_components/single-product';
 import { Ping } from '@/ui/ping';
